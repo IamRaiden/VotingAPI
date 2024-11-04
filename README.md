@@ -34,3 +34,8 @@ The Voting Application API allows users to create, manage, and participate in vo
    ```bash
    git clone https://github.com/yourusername/voting-application-api.git
    cd voting-application-api
+
+### Working
+
+![Enter Candidate](https://github.com/user-attachments/assets/cf5edda0-237f-4984-bd55-ddc1c3d97fb6)
+
