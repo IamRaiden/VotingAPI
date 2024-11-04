@@ -1,0 +1,27 @@
+package com.example.votingapp.Model;
+
+public class Candidate {
+
+
+        private String name;
+        private int voteCount;
+
+        public Candidate(String name) {
+            this.name = name;
+            this.voteCount = 0;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getVoteCount() {
+            return voteCount;
+        }
+
+        public void incrementVote() {
+            this.voteCount++;
+        }
+
+
+}
