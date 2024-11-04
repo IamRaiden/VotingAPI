@@ -37,5 +37,31 @@ The Voting Application API allows users to create, manage, and participate in vo
 
 ### Working
 
+- Enter Candidate name
+
 ![Enter Candidate](https://github.com/user-attachments/assets/cf5edda0-237f-4984-bd55-ddc1c3d97fb6)
+
+- Cast Vote
+
+![Cast Vote](https://github.com/user-attachments/assets/79bbd8ca-8cd1-49c3-8f31-616a9fecf4c6)
+
+- Count Vote
+
+![Count Vote](https://github.com/user-attachments/assets/4bb1062d-3496-46ea-8be2-d064fe4e80fe)
+
+- List vote
+
+![List Vote](https://github.com/user-attachments/assets/f496dcea-bb9f-4995-af5c-54802c2dc26d)
+
+- Winner 
+
+![Winner](https://github.com/user-attachments/assets/a20a58ef-6b7e-4c0a-952e-ecef5a06cad2)
+
+
+  
+
+
+
+
+
 
