@@ -1,0 +1,97 @@
+Project Name: Voting Application API
+
+Overview......
+The Voting Application API is designed to allow users to register candidates, cast votes, count votes, list candidates with their vote counts, and retrieve the winner. The application is structured with two main entities, Candidate and Vote, which enable the system to manage voting data and calculate results efficiently.
+
+Architecture.......
+Architecture Type:
+
+This application follows a RESTful API design, where each functionality is exposed as a separate HTTP endpoint.
+The API is designed for easy integration with client applications, such as front-end interfaces or automated testing tools like Postman.
+Tech Stack:
+
+Backend: Java
+Framework: Spring Boot (for REST API implementation)
+Database: In-memory data storage using ConcurrentHashMap (temporary storage for demonstration; a full database like MySQL or MongoDB would be used in production)
+Entities and Data Model
+Candidate Entity:
+
+Represents an individual running in the election.
+Attributes:
+id (int): Unique identifier for each candidate.
+name (string): Name of the candidate.
+voteCount (int): Total number of votes received by the candidate.
+Vote Entity:
+
+Represents a single vote cast for a candidate.
+Attributes:
+voteId (int): Unique identifier for each vote.
+candidateId (int): Foreign key linking to the Candidate entity.
+timestamp (DateTime): Time at which the vote was cast.
+Relationship:
+A candidate can have multiple votes, represented by the foreign key relationship where candidateId in Vote points to id in Candidate.
+
+Endpoints.........
+The application provides the following endpoints to manage candidates and votes:
+
+Register Candidate:
+
+Endpoint: /candidates/register
+Method: POST
+Description: Registers a new candidate with a unique ID and name.
+Cast Vote:
+
+Endpoint: /votes/cast
+Method: POST
+Description: Allows a user to cast a vote for a candidate by their id. Updates the voteCount in the Candidate entity.
+Count Votes:
+
+Endpoint: /votes/count
+Method: GET
+Description: Retrieves the total number of votes each candidate has received.
+List All Candidates:
+
+Endpoint: /candidates/list
+Method: GET
+Description: Lists all candidates along with their vote counts.
+Retrieve Winner:
+
+Endpoint: /votes/winner
+Method: GET
+Description: Determines and retrieves the candidate with the highest vote count.
+Design Considerations
+Concurrency:
+
+The application is designed to support concurrent access, ensuring that votes can be cast simultaneously without inconsistencies. This is achieved by using ConcurrentHashMap to manage candidates and votes in a thread-safe manner.
+Scalability:
+
+Although the current implementation uses in-memory storage, the design allows for easy scalability by switching to a persistent database (e.g., MySQL or MongoDB) with minimal code changes.
+Modularity:
+
+The application is modular, with each function encapsulated in separate endpoints. This modular design allows for easy maintenance and future expansion, such as adding more complex voting rules.
+Extensibility:
+
+The architecture allows for potential future features like user authentication, vote validation, or audit trails by expanding the Vote and Candidate entities.
+Class Diagram
+The core data model includes the Candidate and Vote classes as illustrated in the ER diagram (provided separately).
+
+Workflow.........
+Candidate Registration:
+
+When a candidate is registered, they are added to the Candidate repository with a unique ID and name.
+Casting a Vote:
+
+Each vote cast increments the voteCount for the corresponding candidate and creates an entry in the Vote entity with a timestamp.
+Counting and Listing Votes:
+
+A GET request to /votes/count or /candidates/list provides vote counts for each candidate.
+Retrieving the Winner:
+
+The application calculates the winner by selecting the candidate with the highest voteCount when a GET request is made to /votes/winner.
+Limitations
+Persistence: Currently, the application does not use a persistent database; all data is lost when the application stops.
+Concurrency: While the ConcurrentHashMap handles concurrency for small-scale applications, larger systems may require database-level concurrency management.
+Future Improvements
+Database Integration: Replace ConcurrentHashMap with a relational or NoSQL database for data persistence.
+User Management: Add user roles and authentication to ensure secure voting.
+Audit Logging: Track each voting event for audit purposes, which could help in scenarios that require a recount or investigation.
